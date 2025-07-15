@@ -1,0 +1,181 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Online Voting System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='nepal_flag.png') }}" alt="Nepal Flag" class="logo">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('vote') }}">Vote</a></li>
+            <li><a href="{{ url_for('tally') }}">Tally Votes</a></li> Ensured in navbar
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Cast Your Vote</h1>
+        {% if 'user_id' in session %}
+            <!-- Content for logged-in users 
+            <form method="POST" action="{{ url_for('vote') }}">
+                <h3>Select One Candidate:</h3>
+                <div class="candidates-row">
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='balen.jpeg') }}" alt="Balen Shah">
+                        <p>Balen Shah (Independent)</p>
+                        <input type="radio" name="candidate" value="Balen Shah (Independent)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='rabi.jpeg') }}" alt="Rabi Lamichhane">
+                        <p>Rabi Lamichhane (Rastriya Swatantra Party)</p>
+                        <input type="radio" name="candidate" value="Rabi Lamichhane (Rastriya Swatantra Party)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='gagan.jpeg') }}" alt="Gagan Thapa">
+                        <p>Gagan Thapa (Nepali Congress)</p>
+                        <input type="radio" name="candidate" value="Gagan Thapa (Nepali Congress)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='harka.jpeg') }}" alt="Harka Bahadur Sampang">
+                        <p>Harka Bahadur Sampang (Independent)</p>
+                        <input type="radio" name="candidate" value="Harka Bahadur Sampang (Independent)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='sita.jpeg') }}" alt="Sita Gurung">
+                        <p>Sita Gurung (CPN-UML)</p>
+                        <input type="radio" name="candidate" value="Sita Gurung (CPN-UML)">
+                    </div>
+                </div>
+                <button type="submit">Cast Vote</button>
+            </form>
+        {% else %}
+            <!-- Content for non-logged-in users 
+            <div class="login-prompt">
+                <h3>Please Log In to Cast Your Vote</h3>
+                <p>You need to be logged in to participate in voting. Click <a href="{{ url_for('login') }}">here</a> to log in.</p>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        alert('{{ message }}');
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            // Ensure only one radio button can be selected
+            if ('user_id' in {{ session|tojson }}) {
+                const radioButtons = document.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        if (radio.checked) {
+                            radioButtons.forEach(rb => {
+                                if (rb !== radio) rb.checked = false;
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote - Online Voting System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='nepal_flag.png') }}" alt="Nepal Flag" class="logo">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('vote') }}">Vote</a></li>
+            <li><a href="{{ url_for('tally') }}">Tally Votes</a></li> <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Cast Your Vote</h1>
+        {% if 'user_id' in session %}
+            <form method="POST" action="{{ url_for('vote') }}">
+                <label for="password">Enter your Password:</label>
+                <input type="password" id="password" name="password" required>
+                <h3>Select One Candidate:</h3>
+                <div class="candidates-row">
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='balen.jpeg') }}" alt="Balen Shah">
+                        <p>Balen Shah (Independent)</p>
+                        <input type="radio" name="candidate" value="Balen Shah (Independent)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='rabi.jpeg') }}" alt="Rabi Lamichhane">
+                        <p>Rabi Lamichhane (Rastriya Swatantra Party)</p>
+                        <input type="radio" name="candidate" value="Rabi Lamichhane (Rastriya Swatantra Party)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='gagan.jpeg') }}" alt="Gagan Thapa">
+                        <p>Gagan Thapa (Nepali Congress)</p>
+                        <input type="radio" name="candidate" value="Gagan Thapa (Nepali Congress)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='harka.jpeg') }}" alt="Harka Bahadur Sampang">
+                        <p>Harka Bahadur Sampang (Independent)</p>
+                        <input type="radio" name="candidate" value="Harka Bahadur Sampang (Independent)">
+                    </div>
+                    <div class="candidate">
+                        <img src="{{ url_for('static', filename='sita.jpeg') }}" alt="Sita Gurung">
+                        <p>Sita Gurung (CPN-UML)</p>
+                        <input type="radio" name="candidate" value="Sita Gurung (CPN-UML)">
+                    </div>
+                </div>
+                <button type="submit">Cast Vote</button>
+            </form>
+        {% else %}
+            <div class="login-prompt">
+                <h3>Please Log In to Cast Your Vote</h3>
+                <p>You need to be logged in to participate in voting. Click <a href="{{ url_for('login') }}">here</a> to log in.</p>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        alert('{{ message }}');
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            // Ensure only one radio button can be selected
+            if ('user_id' in {{ session|tojson }}) {
+                const radioButtons = document.querySelectorAll('input[type="radio"]');
+                radioButtons.forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        if (radio.checked) {
+                            radioButtons.forEach(rb => {
+                                if (rb !== radio) rb.checked = false;
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

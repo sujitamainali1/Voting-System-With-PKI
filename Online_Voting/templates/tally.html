@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally - Online Voting System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <img src="{{ url_for('static', filename='nepal_flag.png') }}" alt="Nepal Flag" class="logo">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('register') }}">Register</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('vote') }}">Vote</a></li>
+            <li><a href="{{ url_for('tally') }}">Tally Votes</a></li> <!-- Added -->
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Vote Tally</h1>
+        <p>Updated: {{ current_time }}</p>
+        <!-- Tally content with table, accessible to all -->
+        <table class="tally-table">
+            <thead>
+                <tr>
+                    <th>Candidate</th>
+                    <th>Votes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Balen Shah (Independent)</td><td>{{ tally.get('Balen Shah (Independent)', 0) }}</td></tr>
+                <tr><td>Rabi Lamichhane (Rastriya Swatantra Party)</td><td>{{ tally.get('Rabi Lamichhane (Rastriya Swatantra Party)', 0) }}</td></tr>
+                <tr><td>Gagan Thapa (Nepali Congress)</td><td>{{ tally.get('Gagan Thapa (Nepali Congress)', 0) }}</td></tr>
+                <tr><td>Harka Bahadur Sampang (Independent)</td><td>{{ tally.get('Harka Bahadur Sampang (Independent)', 0) }}</td></tr>
+                <tr><td>Sita Gurung (CPN-UML)</td><td>{{ tally.get('Sita Gurung (CPN-UML)', 0) }}</td></tr>
+            </tbody>
+        </table>
+        {% if 'user_id' in session %}
+            <div class="button-group" style="margin-top: 20px;">
+                <button onclick="window.location.href='{{ url_for('home') }}'">Back to Home</button>
+                <button onclick="window.location.href='{{ url_for('verify_all') }}'" style="margin-left: 20px;">Verify Vote</button>
+                <button onclick="window.location.href='{{ url_for('logout') }}'" style="margin-left: 20px;">Logout</button>
+            </div>
+        {% else %}
+            <div class="login-prompt" style="margin-top: 20px;">
+                <h3>Please Log In for Additional Options</h3>
+                <p>Logged-in users can verify votes or log out. Click <a href="{{ url_for('login') }}">here</a> to log in.</p>
+            </div>
+        {% endif %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        alert('{{ message }}');
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        });
+    </script>
+</body>
+</html>
