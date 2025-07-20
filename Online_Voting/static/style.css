@@ -1,0 +1,244 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: #003087;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    height: 40px;
+    margin-right: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Allow wrapping if needed */
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px;
+}
+
+.navbar ul li a:hover {
+    text-decoration: underline;
+    background-color: #0056b3;
+    border-radius: 4px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center all content within container */
+}
+
+h1 {
+    color: #333;
+}
+
+h3 {
+    color: #555;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Maintain some vertical spacing between form rows */
+    align-items: center; /* Center the form rows horizontally */
+    width: 100%; /* Ensure form takes full container width */
+    max-width: 500px; /* Limit form width to prevent stretching too much */
+}
+
+form > div {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between label and input */
+    width: 100%; /* Full width of the form */
+}
+
+.candidates-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+}
+
+.candidate {
+    text-align: center;
+    margin: 0 15px;
+}
+
+.candidate img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.candidate p {
+    margin: 5px 0;
+    font-weight: bold;
+    color: #555;
+}
+
+label {
+    text-align: right; /* Align label text to the right */
+    color: #555;
+    font-size: 16px;
+    flex: 1.5; /* Widened label */
+    margin: 0; /* Remove default margin */
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex: 2.5; /* Widened input */
+    width: 100%; /* Ensure input fills its flex container */
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto 0; /* Center the button with margin */
+    display: block; /* Ensures centering */
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+button[onclick="window.location.href='{{ url_for('home') }}'"] {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto; /* Center the button with margin */
+    display: block; /* Ensures centering */
+}
+
+button[onclick="window.location.href='{{ url_for('verify_all') }}'"] {
+    background-color: #ffc107;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto; /* Center the button with margin */
+    display: block; /* Ensures centering */
+}
+
+button[onclick="window.location.href='{{ url_for('logout') }}'"] {
+    background-color: #6f42c1;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto; /* Center the button with margin */
+    display: block; /* Ensures centering */
+}
+
+button[onclick="window.location.href='{{ url_for('home') }}'"]:hover {
+    background-color: #c82333;
+}
+
+button[onclick="window.location.href='{{ url_for('verify_all') }}'"]:hover {
+    background-color: #e0a800;
+}
+
+button[onclick="window.location.href='{{ url_for('logout') }}'"]:hover {
+    background-color: #5a2d91;
+}
+
+.flash-messages {
+    display: none;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.tally-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.tally-table th, .tally-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.tally-table th {
+    background-color: #f4f4f9;
+}
+
+.quote-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.quote-image {
+    width: 200px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-style: italic;
+    color: #555;
+}
